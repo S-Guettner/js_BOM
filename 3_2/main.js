@@ -38,5 +38,7 @@ const pauseMinCountdown = () => {
 }
 
 const restartMinCountdown = () => {
+    minutes--
+    seconds = 0
     startMinCountdown()
 }
