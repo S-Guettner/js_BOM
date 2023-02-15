@@ -9,18 +9,14 @@ let intervalMinutes
 
 const startMinCountdown = () => {
     minutes = Number(minutesInput.value)
-    console.log(minutes)
 
     if(seconds === 0 ){
         time.innerHTML = `${minutes}:00`
         seconds += 60
         minutes--
     }
-
     intervalSeconds = setInterval(() => {
         seconds--
-        console.log(seconds)
-        console.log(minutes)
         if(minutes === 0 && seconds === 0){
             clearInterval(intervalSeconds)
         }
@@ -35,12 +31,9 @@ const startMinCountdown = () => {
             time.innerHTML = `${minutes}:${seconds}`
         }
     },1000)
-
-
 }
 
 const pauseMinCountdown = () => {
-
     clearInterval(intervalSeconds)
 }
 
