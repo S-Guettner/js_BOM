@@ -1,41 +1,32 @@
 const minutesInput = document.querySelector("#minutes")
 const time = document.querySelector("#time")
 
-let minutes
+let minutes = 0
 let seconds = 60
 
 let intervalSeconds
 let intervalMinutes
 
 const startMinCountdown = () => {
-    minutes = parseInt(minutesInput.value-1)
+    minutes = Number(minutesInput.value-1)
+    console.log(minutes)
 
-    
     intervalSeconds = setInterval(() => {
         seconds--
-        if(seconds < 0 && minutes > 0 ){seconds += 59}
-        if(seconds < 10 ){
+        console.log(seconds)
+        console.log(minutes)
+        if(seconds == 0 ){
+            time.innerHTML = `${minutes}:00`
+            minutes--
+            seconds += 60
+        }else if(seconds < 10){
             time.innerHTML = `${minutes}:0${seconds}`
         }
         else{
             time.innerHTML = `${minutes}:${seconds}`
         }
-        if(seconds < 1 ) {
-            clearInterval(intervalSeconds)
-        }
-        console.log(seconds)
     },1000)
-
-    intervalMinutes = setInterval(() => {
-        minutes--
-        time.innerHTML = `${minutes}:${seconds}`
-    },60000)
-    
-    if (minutes < 1 ) {
-        clearInterval(intervalMinutes)
-    }
-
-}   
+}
 
 const pauseMinCountdown = () => {
     clearInterval(intervalMinutes)
