@@ -11,16 +11,13 @@ const startMinCountdown = () => {
     minutes = parseInt(minutesInput.value-1)
 
     
-    if(seconds <= 0 ){seconds += 59}
-
-    
     intervalSeconds = setInterval(() => {
         seconds--
-        if(seconds > 59){seconds = 0}
-        if(seconds <= 0 && minutes > 0 ){seconds += 59}
+        if(seconds < 0 && minutes > 0 ){seconds += 59}
         if(seconds < 10 ){
             time.innerHTML = `${minutes}:0${seconds}`
-        }else{
+        }
+        else{
             time.innerHTML = `${minutes}:${seconds}`
         }
         if(seconds < 1 ) {
